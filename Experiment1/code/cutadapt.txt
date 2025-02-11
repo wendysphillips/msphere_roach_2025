@@ -1,0 +1,23 @@
+# Run in bash 
+
+# Create list of base read file names
+ls > file_list.txt
+grep "_R1.fastq" file_list.txt > filelist2.txt
+sed -i 's/_R1.fastq//g' filelist2.txt
+
+# Run cutadapt in loop
+for sample in $(cat filelist2.txt)
+do
+
+    echo "On sample: ${sample}"
+
+    cutadapt -g GTGYCAGCMGCCGCGGTAA \
+             -G GGACTACNVGGGTWTCTAAT \
+             -o trimmed/${sample}-trimmed-R1.fastq \
+             -p trimmed/${sample}-trimmed-R2.fastq \
+             --discard-untrimmed \
+             ${sample}_R1.fastq \
+             ${sample}_R2.fastq \
+             >> cutadapt-primer-trimming-output.txt 2>&1
+
+done

@@ -1,3 +1,6 @@
+.DS_Store
+.lintr
+
 # History files
 .Rhistory
 .Rapp.history
