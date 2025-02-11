@@ -121,4 +121,4 @@ ps_exp2 = phyloseq(
   refseq(ASVs_filt_renamed),
   phy_tree(fitGTR2$tree))
 
-saveRDS(object = ps_exp1, file = paste0(wd,"ps_exp2.Rds"))
+saveRDS(object = ps_exp2, file = paste0(wd,"ps_exp2.Rds"))
